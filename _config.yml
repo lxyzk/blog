@@ -84,7 +84,7 @@ deploy:
   repo: git@github.com:lxyzk/lxyzk.github.io.git
   branch: master
 - type: git
-  repo: git@git.coding.net:lxyzk/lxyzk.coding.me.git
+  repo: git@e.coding.net:lxyzk/lxyzk.coding.me.git
   branch: master
 
   #主题配置
