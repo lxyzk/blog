@@ -81,10 +81,10 @@ theme: next
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
 - type: git
-  repo: git@github.com:lxyzk/lxyzk.github.io.git
+  repo: git@xiangxin.github.com:lxyzk/lxyzk.github.io.git
   branch: master
 - type: git
-  repo: git@e.coding.net:lxyzk/lxyzk.coding.me.git
+  repo: git@xiangxin.e.coding.net:lxyzk/lxyzk.coding.me.git
   branch: master
 
   #主题配置

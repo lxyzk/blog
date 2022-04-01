@@ -140,7 +140,7 @@ binary-extensions@^2.0.0:
   resolved "http://bnpm.byted.org/binary-extensions/-/binary-extensions-2.2.0.tgz#75f502eeaf9ffde42fc98829645be4ea76bd9e2d"
   integrity sha1-dfUC7q+f/eQvyYgpZFvk6na9ni0=
 
-bluebird@^3.2.2, bluebird@^3.5.1, bluebird@^3.5.2, bluebird@^3.5.5, bluebird@^3.7.2:
+bluebird@^3.2.2, bluebird@^3.5.0, bluebird@^3.5.1, bluebird@^3.5.2, bluebird@^3.5.5, bluebird@^3.7.2:
   version "3.7.2"
   resolved "http://bnpm.byted.org/bluebird/-/bluebird-3.7.2.tgz#9f229c15be272454ffa973ace0dbee79a1b0c36f"
   integrity sha1-nyKcFb4nJFT/qXOs4NvueaGww28=
@@ -619,6 +619,18 @@ hexo-cli@^4.3.0:
     resolve "^1.11.0"
     tildify "^2.0.0"
 
+hexo-deployer-git@^3.0.0:
+  version "3.0.0"
+  resolved "http://bnpm.byted.org/hexo-deployer-git/-/hexo-deployer-git-3.0.0.tgz#da82f7a3445df2b213926dc8d030ba5499b68cf3"
+  integrity sha1-2oL3o0Rd8rITkm3I0DC6VJm2jPM=
+  dependencies:
+    bluebird "^3.5.0"
+    chalk "^4.0.0"
+    hexo-fs "^3.0.1"
+    hexo-util "^2.1.0"
+    moment "^2.18.0"
+    nunjucks "^3.2.1"
+
 hexo-front-matter@^3.0.0:
   version "3.0.0"
   resolved "http://bnpm.byted.org/hexo-front-matter/-/hexo-front-matter-3.0.0.tgz#b9a473c6cb910c73f9fea49f506e98540fcea6cb"
@@ -740,7 +752,7 @@ hexo-theme-next@^8.11.0:
   resolved "http://bnpm.byted.org/hexo-theme-next/-/hexo-theme-next-8.11.0.tgz#d8fa2882db13f5444aa5e7b883b042ba94c0ecc2"
   integrity sha512-gmMu+6Z6PqeKWryfc9XzM4VUKfmLAryI2RL51b0MrP0OLhptIznIWqcZDpZ/CEkgL74jlAJqDqxrUZTsXOgLCg==
 
-hexo-util@^2.0.0, hexo-util@^2.5.0, hexo-util@^2.6.0:
+hexo-util@^2.0.0, hexo-util@^2.1.0, hexo-util@^2.5.0, hexo-util@^2.6.0:
   version "2.5.0"
   resolved "http://bnpm.byted.org/hexo-util/-/hexo-util-2.5.0.tgz#de5635341116ba2563a789a0ebceb55a875221ad"
   integrity sha512-l0zkqcg2524KPO84HQe0JROpPlCM/dEnCJaJrZ1qsq+3+/YxhDa0zxiGtUVY1dtrWzOK/V11Zj+UEklhGP8Jeg==
@@ -1073,7 +1085,7 @@ moment-timezone@^0.5.34:
   dependencies:
     moment ">= 2.9.0"
 
-"moment@>= 2.9.0", moment@^2.29.1:
+"moment@>= 2.9.0", moment@^2.18.0, moment@^2.29.1:
   version "2.29.1"
   resolved "http://bnpm.byted.org/moment/-/moment-2.29.1.tgz#b2be769fa31940be9eeea6469c075e35006fa3d3"
   integrity sha512-kHmoybcPV8Sqy59DwNDY3Jefr64lK/by/da0ViFcuA4DH0vQg5Q6Ze5VimxkfQNSC+Mls/Kx53s7TjP1RhFEDQ==
@@ -1134,7 +1146,7 @@ normalize-path@^3.0.0, normalize-path@~3.0.0:
   resolved "http://bnpm.byted.org/normalize-path/-/normalize-path-3.0.0.tgz#0dcd69ff23a1c9b11fd0978316644a0388216a65"
   integrity sha512-6eZs5Ls3WtCisHWp9S2GUy8dqkpGi4BVSz3GaqiE6ezub0512ESztXUwUB6C6IKbQkY2Pnb/mD4WYojCRwcwLA==
 
-nunjucks@^3.2.3:
+nunjucks@^3.2.1, nunjucks@^3.2.3:
   version "3.2.3"
   resolved "http://bnpm.byted.org/nunjucks/-/nunjucks-3.2.3.tgz#1b33615247290e94e28263b5d855ece765648a31"
   integrity sha512-psb6xjLj47+fE76JdZwskvwG4MYsQKXUtMsPh6U0YMvmyjRtKRFcxnlXGWglNybtNTNVmGdp94K62/+NjF5FDQ==
