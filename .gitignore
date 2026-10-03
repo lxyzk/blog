@@ -1,7 +1,22 @@
+# OS metadata
 .DS_Store
 Thumbs.db
-db.json
-*.log
+
+# Dependencies and local caches
 node_modules/
-public/
+/.npm/
+/.cache/
+
+# Hexo generated output and deployment checkouts
+/db.json
+/public/
 .deploy*/
+
+# Local logs and credentials
+*.log
+.env
+.env.*
+!.env.example
+
+# npm is the only supported package manager; keep package-lock.json tracked
+/yarn.lock
