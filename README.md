@@ -9,6 +9,7 @@
 ```sh
 nvm use
 npm ci
+npm test
 npm run build
 npm run server
 ```
@@ -32,10 +33,14 @@ npm run clean
 npm run build
 ```
 
-### 尚未有上游修复的漏洞（2026-10-03）
+### braces 本地安全补丁（2026-10-03）
 
 [GHSA-vfj7-8cjw-p6xm](https://github.com/advisories/GHSA-vfj7-8cjw-p6xm) 影响 `braces <=3.0.3`，官方暂无修复版本。当前最新版 Hexo 仍经 `micromatch` 引入它；Nunjucks 和 Git 部署插件的文件监听依赖也引入它。升级后 npm audit 的 8 条高危记录都归因于这一公告，并非 8 个独立漏洞。
 
-漏洞触发条件是处理恶意的深层嵌套 brace glob 表达式，可能导致 Node.js 进程栈耗尽。本站为静态输出，相关依赖运行在构建、预览和部署环境；目前不应让不受信任的输入修改 glob 配置或监听模式。此说明不是漏洞修复，审计检查会持续失败直到上游修复或依赖替换完成。不要使用 `npm audit fix --force` 建议的 Hexo 3.9.0 降级来规避记录。
+仓库通过 `scripts/patch-braces.cjs` 和 `patches/braces-3.0.3.json` 为所有安装的副本添加最大深度 128 的保护：解析器限制花括号和括号的嵌套，compile、expand 和 stringify 递归遍历同时限制深度，防止直接传入 AST 绕过解析器。超深输入抛出明确的 SyntaxError，普通模式保留原有行为。
+
+`npm ci` / `npm install` 的 postinstall 会应用补丁，build、server、deploy、test 前也会重新验证，覆盖使用 `--ignore-scripts` 安装的情况。补丁校验源文件和补丁结果的 SHA-256，重复运行安全；源码或版本不匹配时中止，要求人工复核。`braces` 暂时固定为 3.0.3，上游发布修复后，应移除固定版本、补丁及对应生命周期脚本，重新生成锁文件并运行测试。
+
+`npm test` 覆盖正常模式、恶意深层嵌套、未闭合模式、直接 AST 输入及文件监听。此补丁是仓库内的临时防护，不是官方修复版本；包版本保持真实，因此 npm audit 和 GitHub 告警仍会报告此漏洞，安全检查会持续失败直到上游修复或依赖替换完成。不要隐藏公告或使用 `npm audit fix --force` 建议的 Hexo 3.9.0 降级来规避记录。本站为静态输出，相关依赖运行在构建、预览和部署环境。
 
 `themes/landscape` 保留为历史主题静态资源；已移除其不使用的 Grunt 下载工具和依赖声明。当前博客使用 npm 安装的 NexT，根目录不再安装备用 Landscape 包。

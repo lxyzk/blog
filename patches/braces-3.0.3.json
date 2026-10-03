@@ -1,0 +1,62 @@
+{
+  "version": "3.0.3",
+  "advisory": "GHSA-vfj7-8cjw-p6xm",
+  "files": [
+    {
+      "path": "lib/parse.js",
+      "originalSha256": "e572166565f15fa6ad9865ae49d678218e32aabfd1b3720f6d0d43d39800d310",
+      "patchedSha256": "b7777321237613f33cda73a16f7f3a692d70fe89cf7ce35a290bfe354b6e2675",
+      "replacements": [
+        {
+          "from": "  const push = node => {\n",
+          "to": "  const push = node => {\n    if (node.nodes && stack.length > 128) {\n      throw new SyntaxError('braces nesting depth exceeds security limit (128)');\n    }\n"
+        }
+      ]
+    },
+    {
+      "path": "lib/compile.js",
+      "originalSha256": "dc98f22eee3d511785d92a00758d5f0d48efed5f5813bdecc2de430c529b5c9f",
+      "patchedSha256": "ed07cc37abcd7683b173656ca6fe90e0756ec1fb8ce118e5a3b5324a7574619a",
+      "replacements": [
+        {
+          "from": "  const walk = (node, parent = {}) => {\n",
+          "to": "  const walk = (node, parent = {}, depth = 0) => {\n    if (depth > 128) {\n      throw new SyntaxError('braces nesting depth exceeds security limit (128)');\n    }\n"
+        },
+        {
+          "from": "output += walk(child, node);",
+          "to": "output += walk(child, node, depth + 1);"
+        }
+      ]
+    },
+    {
+      "path": "lib/expand.js",
+      "originalSha256": "41ccc196ebfa7b7781a634e721eb744e4e7bcb54cba427a7e3d6806a1b9e58f7",
+      "patchedSha256": "9b60cd5f812be5db9e1daedfe298dc63210dc10b74c0241649cc52d9e7c90668",
+      "replacements": [
+        {
+          "from": "  const walk = (node, parent = {}) => {\n",
+          "to": "  const walk = (node, parent = {}, depth = 0) => {\n    if (depth > 128) {\n      throw new SyntaxError('braces nesting depth exceeds security limit (128)');\n    }\n"
+        },
+        {
+          "from": "walk(child, node);",
+          "to": "walk(child, node, depth + 1);"
+        }
+      ]
+    },
+    {
+      "path": "lib/stringify.js",
+      "originalSha256": "379f22d77bfa1478341ccd49c5e4267464aabcbba03558bab332aac23fc6f23a",
+      "patchedSha256": "5339e02e821fc7002ab01dc869d09d7d1fe5ac65badf0e8dfdcb5ed18cf1c880",
+      "replacements": [
+        {
+          "from": "  const stringify = (node, parent = {}) => {\n",
+          "to": "  const stringify = (node, parent = {}, depth = 0) => {\n    if (depth > 128) {\n      throw new SyntaxError('braces nesting depth exceeds security limit (128)');\n    }\n"
+        },
+        {
+          "from": "output += stringify(child);",
+          "to": "output += stringify(child, {}, depth + 1);"
+        }
+      ]
+    }
+  ]
+}

@@ -24,6 +24,7 @@ jobs:
           cache: npm
       - run: npm install --global npm@11.19.0
       - run: npm ci
+      - run: npm test
       - run: npm run build
   audit:
     runs-on: ubuntu-latest

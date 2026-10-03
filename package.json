@@ -7,7 +7,13 @@
     "clean": "hexo clean",
     "deploy": "hexo deploy",
     "server": "hexo server",
-    "audit": "npm audit"
+    "audit": "npm audit",
+    "postinstall": "node scripts/patch-braces.cjs",
+    "prebuild": "node scripts/patch-braces.cjs",
+    "preserver": "node scripts/patch-braces.cjs",
+    "predeploy": "node scripts/patch-braces.cjs",
+    "pretest": "node scripts/patch-braces.cjs",
+    "test": "node --test test/braces-security.test.cjs"
   },
   "hexo": {
     "version": "8.1.2"
@@ -30,6 +36,7 @@
   },
   "packageManager": "npm@11.19.0",
   "overrides": {
-    "js-yaml": "^4.3.2"
+    "js-yaml": "^4.3.2",
+    "braces": "3.0.3"
   }
 }
