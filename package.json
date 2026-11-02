@@ -28,7 +28,7 @@
     "hexo-renderer-marked": "^7.0.1",
     "hexo-renderer-stylus": "^3.0.1",
     "hexo-server": "^3.0.0",
-    "hexo-theme-next": "^8.29.0",
+    "hexo-theme-next": "^8.29.1",
     "hexo-deployer-git": "^4.0.0"
   },
   "engines": {
